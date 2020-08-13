@@ -21,7 +21,7 @@ CREATE TABLE `strategy_experiment` (
   `start_time` datetime NOT NULL COMMENT '实验生效开始时间',
   `end_time` datetime NOT NULL COMMENT '实验生效结束时间',
   `exp_version` varchar(11) NOT NULL DEFAULT '1' COMMENT '实验的版本号',
-  `state` varchar(15) DEFAULT 'DRAFT' COMMENT '实验的状态,DRAFT表示草稿,RUNNING表示正在运行,PAUSED表示暂停,TERMINATED表示实验已终止',
+  `state` enum('DRAFT', 'RUNNING', 'PAUSED','TERMINATED') NOT NULL DEFAULT 'DRAFT' COMMENT '实验的状态,DRAFT表示草稿,RUNNING表示正在运行,PAUSED表示暂停,TERMINATED表示实验已终止',
   `creator` varchar(31) NOT NULL COMMENT '实验的创建人',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
