@@ -1,0 +1,16 @@
+{
+  "mysql": {
+    "schema": "",
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": ""
+  },
+  "redis_cli": {
+    "host": "",
+    "port": "",
+    "password": "",
+    "pool_size": 200
+  },
+  "port":":8074"
+}

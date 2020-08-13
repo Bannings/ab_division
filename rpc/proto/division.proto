@@ -1,0 +1,65 @@
+syntax = "proto3";
+package proto;
+
+service DivisionRPC {
+    rpc GetExperiment (BusinessInfo) returns (ExperimentInfoResponse){}
+    rpc GetABDivision (User) returns (ABResponse){}
+}
+
+enum Status {
+   SUCCEED = 0;
+   FAILED  = 1;
+}
+
+enum Gender {
+  MALE   = 0;
+  FEMALE = 1;
+}
+
+message User {
+  string Udid       = 1;
+  int64  Uid        = 2;
+  string Version    = 3;
+  string Channel    = 4;
+  Gender Gender     = 5;
+  string BusinessId = 6;
+}
+
+message BusinessInfo {
+  string BusinessId = 1;
+}
+
+message Passthrough {
+  string ExpId      = 1;
+  string BucketId   = 2;
+  string BucketName = 3;
+  int64  Uid        = 4;
+  string Udid       = 5;
+  int64  ServeTime  = 6;
+}
+
+message ABDivision{
+   string      Assignment  = 1;
+   Passthrough Passthrough = 2;
+}
+
+
+message ABResponse {
+  Status   ResponseStatus  = 1;
+  string   Massage         = 2;
+  repeated ABDivision Data = 3;
+}
+
+message ExperimentInfo {
+  string ExpId       = 1;
+  string ExpName     = 2;
+  string State       = 3;
+  bool   NewUserOnly = 4;
+}
+
+message ExperimentInfoResponse{
+  Status   ResponseStatus      = 1;
+  string   Massage             = 2;
+  repeated ExperimentInfo Data = 3;
+}
+
